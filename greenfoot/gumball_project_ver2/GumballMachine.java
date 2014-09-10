@@ -14,10 +14,11 @@ public class GumballMachine extends Actor
         GreenfootImage image = getImage() ;
         image.scale( 350, 400 ) ; 
     }
-
+    boolean crankTurnedFlag = false;
     public void act() 
     {
         int mouseX, mouseY, mousehcX, mousehcY ;
+        
 
         if(Greenfoot.mousePressed(this)) {          
             MouseInfo mouse = Greenfoot.getMouseInfo();  
@@ -34,6 +35,7 @@ public class GumballMachine extends Actor
             m.setImage(gi);
             World world = getWorld();
             world.addObject( m, mouseX, mouseY ) ;
+            crankTurnedFlag = true;
         }
 
         Actor coin;
@@ -56,5 +58,10 @@ public class GumballMachine extends Actor
             world.addObject(mhc, mousehcX, mousehcY);
             world.removeObject( coin ) ;
         }
+    }
+        
+    public boolean crankTurned () {
+          return crankTurnedFlag;
+            
     }    
 }
