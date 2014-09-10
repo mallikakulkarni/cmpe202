@@ -17,7 +17,7 @@ public class GumballMachine extends Actor
 
     public void act() 
     {
-        int mouseX, mouseY ;
+        int mouseX, mouseY, mousehcX, mousehcY ;
 
         if(Greenfoot.mousePressed(this)) {          
             MouseInfo mouse = Greenfoot.getMouseInfo();  
@@ -40,8 +40,20 @@ public class GumballMachine extends Actor
         coin = getOneIntersectingObject( Coin.class ) ;
         if ( coin != null )
         {
+            MouseInfo mousehc = Greenfoot.getMouseInfo();
+            mousehcX=mousehc.getX();
+            mousehcY=mousehc.getY();
             System.out.println( coin.toString() ) ;
+            GreenfootImage gihc;
+            gihc = new GreenfootImage(100,100);
+            gihc.setColor( java.awt.Color.YELLOW);
+            gihc.fill();
+            gihc.setColor(java.awt.Color.BLACK);
+            gihc.drawString("Have Coin!", 0, 50);
+            Message mhc = new Message();
+            mhc.setImage(gihc);
             World world = getWorld() ;
+            world.addObject(mhc, mousehcX, mousehcY);
             world.removeObject( coin ) ;
         }
     }    
