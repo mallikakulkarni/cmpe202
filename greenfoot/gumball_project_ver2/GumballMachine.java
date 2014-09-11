@@ -42,6 +42,7 @@ public class GumballMachine extends Actor
         coin = getOneIntersectingObject( Coin.class ) ;
         if ( coin != null )
         {
+            try {
             MouseInfo mousehc = Greenfoot.getMouseInfo();
             mousehcX=mousehc.getX();
             mousehcY=mousehc.getY();
@@ -57,6 +58,10 @@ public class GumballMachine extends Actor
             World world = getWorld() ;
             world.addObject(mhc, mousehcX, mousehcY);
             world.removeObject( coin ) ;
+        } catch (NullPointerException npe) {
+            System.out.println ("Null Pointer");
+        }
+            
         }
     }
         
