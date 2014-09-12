@@ -12,8 +12,19 @@ public class Picker extends Alien
      * Act - do whatever the Picker wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public void pick() {}
+   /* boolean greenFlag = false, randomFlag = false;
     public void act() 
     {
-        // Add your action code here.
-    }    
+         greenFlag = ((Inspector) getWorld().getObjects(Inspector.class).get(0)).pickGreenInspector();
+         randomFlag = ((Inspector) getWorld().getObjects(Inspector.class).get(0)).pickRandomInspector();
+         
+         if (greenFlag = true) {
+             System.out.println ("Green Ball");
+         }
+         else {
+              System.out.println ("Any Ball");
+    }
+} 
+ */   
 }

@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.Random;
+import java.util.ArrayList;
 /**
  * Write a description of class Inspector here.
  * 
@@ -14,7 +14,7 @@ public class Inspector extends Alien
      * fake coin and either keeps or returns the coin AND
      * if its a real coin calls on the pickers to release a gumball
      */
-    public boolean pickRandomIns = false, pickGreenIns = false;
+    /*public boolean pickRandomIns = false, pickGreenIns = false;
     boolean actFlag = false;
     int randomInt;
      //int mouseX, mouseY;
@@ -22,15 +22,18 @@ public class Inspector extends Alien
     {
         actFlag = ((GumballMachine) getWorld().getObjects(GumballMachine.class).get(0)).crankTurned();
         if (actFlag == true) {
+           
+           randomInt = Greenfoot.getRandomNumber(100);
+           
             
-            Random randomGenerator = new Random();
-            randomInt = randomGenerator.nextInt(100);
+        
+            System.out.println (randomInt);
             /*
             MouseInfo mouse = Greenfoot.getMouseInfo();  
             mouseX=mouse.getX();  
             mouseY=mouse.getY();
             */
-            System.out.println( "Real Coin!" ) ;
+            /*System.out.println( "Real Coin!" ) ;
             /*GreenfootImage gi;
             gi = new GreenfootImage(100,100);
             gi.setColor( java.awt.Color.YELLOW ) ;
@@ -42,12 +45,15 @@ public class Inspector extends Alien
             World world = getWorld();
             world.addObject( m, mouseX, mouseY ) ;
             */
+       /*    
+           
         }    
     }    
     
     public boolean pickRandomInspector() {
         if (randomInt % 2 == 0) {
                 pickRandomIns = true;
+                System.out.println("Random");
                 return pickRandomIns;
         }
         else {
@@ -58,10 +64,37 @@ public class Inspector extends Alien
                 
         if (randomInt % 2 != 0) {
                 pickGreenIns = true;
+                System.out.println("Green");
                 return pickGreenIns;
         }
         else {
                 return pickRandomIns;
         }
-    }    
+    } 
+    
+  */
+ 
+      private ArrayList<Picker> pickers = new ArrayList<Picker>();
+ 
+ 
+      public void addPicker(Picker obj) {
+          pickers.add(obj);
+      }
+      
+      public void removePicker(Picker obj) {
+          pickers.remove(obj);
+      }
+        
+      public void inspect (Coin coin) {
+          System.out.println ("Coin : " + coin.getClass());
+          GumballMachine gumballMachine = new GumballMachine();
+          gumballMachine.setMessage (coin.getClass().getName());
+          int whichPicker = Greenfoot.getRandomNumber(pickers.size());
+          Picker pickerChosen = pickers.get(whichPicker);
+          System.out.println ("Picker: " +pickerChosen.getClass());
+          if (coin.getClass() == Quarter.class) {
+              pickerChosen.pick();
+            }
+        }
+
 }
