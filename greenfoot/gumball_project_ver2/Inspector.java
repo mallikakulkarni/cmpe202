@@ -75,7 +75,28 @@ public class Inspector extends Alien
   */
  
       private ArrayList<Picker> pickers = new ArrayList<Picker>();
- 
+      Picker greenPicker = new GreenPicker();
+      
+      Actor coin;
+      
+      public void act() {
+          /*GumballWorld gumball = (GumballWorld) getWorld();
+          GumballMachine gbm = gumball.getGumballMachine();
+
+          coin =  gbm.getCoin();
+          if (coin == null) {
+              //System.out.println("Coin is null. Wont call inspector");
+          } else {
+              
+              
+              if (gbm.crankTurned() == true) {
+              System.out.println("Coin is NOT null. Calling inspector..");
+              System.out.println (gbm.crankTurned());
+              inspect(coin);
+            }
+          }
+          */
+      }
  
       public void addPicker(Picker obj) {
           pickers.add(obj);
@@ -85,15 +106,25 @@ public class Inspector extends Alien
           pickers.remove(obj);
       }
         
-      public void inspect (Coin coin) {
+      public void inspect (Actor coin) {
           System.out.println ("Coin : " + coin.getClass());
-          GumballMachine gumballMachine = new GumballMachine();
-          gumballMachine.setMessage (coin.getClass().getName());
+          
+          GumballWorld gumball = (GumballWorld) getWorld();
+          GumballMachine gbm = gumball.getGumballMachine();
+          
+          gbm.setMessage (coin.getClass().getName());
+          addPicker(greenPicker);
+        
           int whichPicker = Greenfoot.getRandomNumber(pickers.size());
+          
+          
           Picker pickerChosen = pickers.get(whichPicker);
           System.out.println ("Picker: " +pickerChosen.getClass());
           if (coin.getClass() == Quarter.class) {
               pickerChosen.pick();
+            }
+          else {
+              gbm.setMessage ("Fake Coin");
             }
         }
 

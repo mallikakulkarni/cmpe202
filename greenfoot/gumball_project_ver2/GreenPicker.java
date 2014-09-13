@@ -12,11 +12,15 @@ public class GreenPicker extends Picker
      * Act - do whatever the GreenPicker wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public void act () {}
+    
+    @Override
     public void pick() 
     {
-        World world = getWorld();
+        GumballWorld gumballworld = (GumballWorld) getWorld();
         Gumball gb = new GreenGumball();
-        world.addObject(gb, 500, 500);
-        ((GumballMachine) getWorld().getObjects(GumballMachine.class).get(0)).setMessage(gb.getClass().getName());
+        gumballworld.addObject(gb, -290, -290);
+        
+        
     }    
 }

@@ -13,6 +13,8 @@ public class GumballWorld extends World
      * Constructor for objects of class GumballWorld.
      * 
      */
+    
+    private GumballMachine gumballmachine;
     public GumballWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -26,7 +28,7 @@ public class GumballWorld extends World
      */
     private void prepare()
     {
-        GumballMachine gumballmachine = new GumballMachine();
+        gumballmachine = new GumballMachine();
         addObject(gumballmachine, 367, 237);
         addObject( new Penny(), 57, 71 ) ;
         addObject( new Quarter(), 68, 156 ) ;
@@ -44,4 +46,10 @@ public class GumballWorld extends World
         addObject(quarter2, 157, 426);
         quarter2.setLocation(67, 354);
     }
+    
+    public GumballMachine getGumballMachine() {
+        return gumballmachine;
+    }
+    
+    
 }
