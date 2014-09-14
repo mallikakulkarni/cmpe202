@@ -96,7 +96,7 @@ public class Inspector extends Alien
            * 4. Call the pick methid on the picker class
            * 
           */
-         Picker picker1, picker2;
+       
          GumballWorld world = (GumballWorld) getWorld();
          List<Picker> pickers = world.getObjects(Picker.class);
          int whichPicker = Greenfoot.getRandomNumber(pickers.size()); 

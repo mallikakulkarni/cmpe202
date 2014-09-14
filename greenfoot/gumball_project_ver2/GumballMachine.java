@@ -57,8 +57,8 @@ public class GumballMachine extends Actor
         Message m = new Message();
         int mouseX, mouseY;
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        mouseX=mouse.getX();
-        mouseY=mouse.getY();
+        mouseX=this.getX();
+        mouseY=this.getY();
         World world = getWorld();
         if (m.getWorld() != null) {
             world.removeObject(m);
