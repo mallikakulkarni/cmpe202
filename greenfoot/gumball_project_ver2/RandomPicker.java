@@ -12,6 +12,8 @@ public class RandomPicker extends Picker
      * Act - do whatever the RandomPicker wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public void act () {}
+    
     public void pick() 
     {
         Gumball gb = new GreenGumball();
@@ -27,9 +29,27 @@ public class RandomPicker extends Picker
             break;
         }
         World world = getWorld();
-        world.addObject(gb, 500, 500);
+        world.addObject(gb, 500, 100);
         //GumballMachine gbm = new GumballMachine();
         
-        ((GumballMachine) getWorld().getObjects(GumballMachine.class).get(0)).setMessage(gb.getClass().getName());
-    }    
+        setMessage(gb.getClass().getName());
+    }
+    
+    /*
+    public void setMessage(String msg) {
+        Message m = new Message();
+        
+        int mouseX, mouseY;
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        mouseX=mouse.getX();
+        mouseY=mouse.getY();
+        World world = getWorld();
+        if (m.getWorld() != null) {
+            world.removeObject(m);
+
+        }
+        world.addObject(m, mouseX, mouseY);
+        m.setText(msg);
+    }
+    */
 }

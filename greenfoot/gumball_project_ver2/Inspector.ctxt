@@ -1,10 +1,9 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment1.params=obj
-comment1.target=void\ addPicker(Picker)
-comment2.params=obj
-comment2.target=void\ removePicker(Picker)
-comment3.params=coin
-comment3.target=void\ inspect(greenfoot.Actor)
-numComments=4
+comment0.text=\ \ \ \ \n\ \ \ \ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ }\ \ \ \ \n\ \ \ \ }\ \ \ \ \n\ \ \ \ \n\ \ \ \ public\ boolean\ pickRandomInspector()\ {\n\ \ \ \ \ \ \ \ if\ (randomInt\ %\ 2\ \=\=\ 0)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pickRandomIns\ \=\ true;\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println("Random");\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ pickRandomIns;\n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ else\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ pickGreenIns;\n\ \ \ \ \ \ \ \ }\n\ \ \ \ }\n\ \ \ \ public\ boolean\ pickGreenInspector()\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ if\ (randomInt\ %\ 2\ \!\=\ 0)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pickGreenIns\ \=\ true;\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println("Green");\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ pickGreenIns;\n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ else\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ pickRandomIns;\n\ \ \ \ \ \ \ \ }\n\ \ \ \ }\ \n\ \ \ \ \n
+comment1.params=
+comment1.target=Picker\ getAnyPicker()
+comment2.params=coin
+comment2.target=void\ inspect(greenfoot.Actor)
+numComments=3

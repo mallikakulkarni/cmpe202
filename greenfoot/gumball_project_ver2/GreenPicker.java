@@ -17,10 +17,12 @@ public class GreenPicker extends Picker
     @Override
     public void pick() 
     {
-        GumballWorld gumballworld = (GumballWorld) getWorld();
-        Gumball gb = new GreenGumball();
-        gumballworld.addObject(gb, -290, -290);
+        GumballWorld gumballworld =  (GumballWorld) getWorld();
+        GreenGumball gb = new GreenGumball();
+        gumballworld.addObject(gb, 500, 500);
+        setMessage(gb.getClass().getName());
         
-        
-    }    
+    } 
+    
+    
 }

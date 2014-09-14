@@ -15,6 +15,7 @@ public class GumballWorld extends World
      */
     
     private GumballMachine gumballmachine;
+    
     public GumballWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -29,6 +30,7 @@ public class GumballWorld extends World
     private void prepare()
     {
         gumballmachine = new GumballMachine();
+        
         addObject(gumballmachine, 367, 237);
         addObject( new Penny(), 57, 71 ) ;
         addObject( new Quarter(), 68, 156 ) ;

@@ -18,7 +18,7 @@ public class GumballMachine extends Actor
         image.scale( 350, 400 ) ; 
     }
 
-    Message m = new Message();
+   
     public void act() 
     {
 
@@ -28,6 +28,7 @@ public class GumballMachine extends Actor
                 setMessage("No coin");
             } else {
                 setMessage ("Crank Turned!");
+                
                 GumballWorld world = (GumballWorld) getWorld();
                 List<Actor> inspectors = world.getObjects(Inspector.class);
                 inspector = (Inspector) inspectors.get(0);
@@ -41,7 +42,7 @@ public class GumballMachine extends Actor
         {
             if (haveCoin != null)
             {   
-                coin.move(-300);
+                coin.move(-500);
             }
             else {
                 haveCoin = coin;
@@ -53,6 +54,7 @@ public class GumballMachine extends Actor
     }
 
     public void setMessage(String msg) {
+        Message m = new Message();
         int mouseX, mouseY;
         MouseInfo mouse = Greenfoot.getMouseInfo();
         mouseX=mouse.getX();

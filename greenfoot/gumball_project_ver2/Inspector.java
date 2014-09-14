@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.List;
 /**
  * Write a description of class Inspector here.
  * 
@@ -74,58 +75,65 @@ public class Inspector extends Alien
     
   */
  
-      private ArrayList<Picker> pickers = new ArrayList<Picker>();
-      Picker greenPicker = new GreenPicker();
       
-      Actor coin;
+      
+     // RandomPicker randomPicker;
+      
       
       public void act() {
-          /*GumballWorld gumball = (GumballWorld) getWorld();
-          GumballMachine gbm = gumball.getGumballMachine();
-
-          coin =  gbm.getCoin();
-          if (coin == null) {
-              //System.out.println("Coin is null. Wont call inspector");
-          } else {
-              
-              
-              if (gbm.crankTurned() == true) {
-              System.out.println("Coin is NOT null. Calling inspector..");
-              System.out.println (gbm.crankTurned());
-              inspect(coin);
-            }
-          }
-          */
+          
       }
  
-      public void addPicker(Picker obj) {
-          pickers.add(obj);
+      
+      
+      
+      public Picker getAnyPicker () {
+         /*
+          * For choosing a picker randomly
+           * 1. Ned two pickers, one of each type
+           * 2. Get a random number to choose picker
+           * 3. Map the random numner to a picker
+           * 4. Call the pick methid on the picker class
+           * 
+          */
+         Picker picker1, picker2;
+         GumballWorld world = (GumballWorld) getWorld();
+         List<Picker> pickers = world.getObjects(Picker.class);
+         int whichPicker = Greenfoot.getRandomNumber(pickers.size()); 
+         Picker pickerChosen = pickers.get(whichPicker);
+         return pickerChosen;
       }
       
-      public void removePicker(Picker obj) {
-          pickers.remove(obj);
-      }
-        
+     
+      
       public void inspect (Actor coin) {
-          System.out.println ("Coin : " + coin.getClass());
           
+          /*
+           * 1. Retrieve the coin -- done
+           * 2. If not a quarter, displays fake coin and return
+           * 3. He chooses a picker randomly
+           * 4. Calls the pick() on the chosen picker
+           * 
+           
+           */
+          GumballMachine gumballmachine;
+      
           GumballWorld gumball = (GumballWorld) getWorld();
-          GumballMachine gbm = gumball.getGumballMachine();
+          List<Actor> gbm = gumball.getObjects(GumballMachine.class);
+          gumballmachine = (GumballMachine) gbm.get(0);
           
-          gbm.setMessage (coin.getClass().getName());
-          addPicker(greenPicker);
+          System.out.println ("Coin : " + coin.getClass());
+         
+          if (coin.getClass() != Quarter.class) {
+              setMessage ("Fake Coin");
+              return;
+          }
+          
+          
+          setMessage (coin.getClass().getName());
+          Picker anyPicker = getAnyPicker();
+          anyPicker.pick();
         
-          int whichPicker = Greenfoot.getRandomNumber(pickers.size());
-          
-          
-          Picker pickerChosen = pickers.get(whichPicker);
-          System.out.println ("Picker: " +pickerChosen.getClass());
-          if (coin.getClass() == Quarter.class) {
-              pickerChosen.pick();
-            }
-          else {
-              gbm.setMessage ("Fake Coin");
-            }
         }
 
 }

@@ -18,5 +18,21 @@ public class Alien extends Actor
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
+    
+    public void setMessage(String msg) {
+        Message m = new Message();
+        
+        int mouseX, mouseY;
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        mouseX=this.getX();
+        mouseY=this.getY();
+        World world = getWorld();
+        if (m.getWorld() != null) {
+            world.removeObject(m);
+
+        }
+        world.addObject(m, mouseX, mouseY);
+        m.setText(msg);
+    }
 }
