@@ -2,15 +2,14 @@
 
 import java.util.Random;
 
-public class HasQuarterState implements State {
+public class HasFiftyCents implements State {
 	GumballMachine gumballMachine;
-	int returnValue = 0;
 	
-	private boolean turnCrankFlag = false;
-	
-	public HasQuarterState(GumballMachine gumballMachine) {
+ 
+	public HasFiftyCents(GumballMachine gumballMachine) {
 		this.gumballMachine = gumballMachine;
 	}
+	
   
 	public void insertQuarter() {
 		System.out.println("You can't insert another quarter");
@@ -25,26 +24,22 @@ public class HasQuarterState implements State {
 	}
  
 	public void ejectQuarter() {
-		System.out.println("Quarter Returned");
-
+		System.out.println("Quarter returned");
+		gumballMachine.setState(gumballMachine.getInsufficientCoinState());
 	}
 	
 	public void ejectDime() {
-		System.out.println("Dime Returned");
-
+		System.out.println("Dime returned");
+		gumballMachine.setState(gumballMachine.getInsufficientCoinState());
 	}
 	
 	public void ejectNickel() {
 		System.out.println("Nickel returned");
-
+		gumballMachine.setState(gumballMachine.getInsufficientCoinState());
 	}
  
 	public void turnCrank() {
-		turnCrankFlag = true;
 		System.out.println("You turned...");
-		returnValue = gumballMachine.getreturnValue();
-		checkReturnValue();
-		returnValue = 0;
 		gumballMachine.setState(gumballMachine.getSoldState());
 	}
 
@@ -55,19 +50,6 @@ public class HasQuarterState implements State {
 	public String toString() {
 		return "waiting for turn of crank";
 	}
-	
-	void checkReturnValue() {
-		if (returnValue > 0) {
-			if (returnValue >= 10) {
-				for (int i = 1; i <= returnValue/10; i++) {
-					ejectDime();
-					returnValue = returnValue - 10;
-				}
-			}
-			if (returnValue > 0) {
-				ejectNickel();
-			}
-		}
-	}
+
 	
 }

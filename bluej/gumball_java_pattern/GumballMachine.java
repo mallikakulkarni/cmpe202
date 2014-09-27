@@ -1,6 +1,6 @@
 
 
-public class GumballMachine {
+public class GumballMachine implements IGumballMachine {
  
 	State soldOutState;
 	State noQuarterState;
@@ -9,6 +9,9 @@ public class GumballMachine {
  
 	State state = soldOutState;
 	int count = 0;
+	boolean isGumballinSlotFlag = false;
+	int gumballsInSlot = 0;
+	int returnValue = 0;
  
 	public GumballMachine(int numberGumballs) {
 		soldOutState = new SoldOutState(this);
@@ -25,13 +28,35 @@ public class GumballMachine {
 	public void insertQuarter() {
 		state.insertQuarter();
 	}
+	
+	public void insertDime() {
+		state.insertDime();
+	}
+	
+	public void insertNickel() {
+		state.insertNickel();
+	}
  
 	public void ejectQuarter() {
 		state.ejectQuarter();
 	}
+	
+	public void ejectDime() {
+		state.ejectDime();
+	}
+	
+	public void ejectNickel() {
+		state.ejectNickel();
+	}
  
 	public void turnCrank() {
 		state.turnCrank();
+		if (state == soldState) {
+			gumballsInSlot = gumballsInSlot + 1;
+			isGumballinSlotFlag = true;
+		} else {
+			isGumballinSlotFlag = false;
+		}
 		state.dispense();
 	}
 
@@ -87,4 +112,41 @@ public class GumballMachine {
 		result.append("Machine is " + state + "\n");
 		return result.toString();
 	}
+
+	public boolean isGumballInSlot() {
+		// TODO Auto-generated method stub
+		if (isGumballinSlotFlag == true) {
+			System.out.print(gumballsInSlot+" gumball");
+			if (gumballsInSlot > 1) {
+				System.out.print("s");
+			}
+			System.out.println (" in slot");
+		}
+		else {
+			System.out.println ("No gumballs in slot");
+		}
+		return isGumballinSlotFlag;
+		
+	}
+
+	
+	public void takeGumballFromSlot() {
+		// TODO Auto-generated method stub
+		if (isGumballInSlot() == true) {
+			System.out.println ("Take gumball from slot");
+			gumballsInSlot = gumballsInSlot - 1;
+			if (gumballsInSlot == 0) {
+			System.out.println ("No gumballs left in slot");
+			}
+		}
+	}
+	
+	public void setreturnValue(int value) {
+		returnValue = value;
+	}
+	
+	public int getreturnValue() {
+		return returnValue;
+	}
 }
+
