@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ accessPublicA1()
+comment1.params=
+comment1.target=void\ accessProtectedA1()
+comment2.params=
+comment2.target=void\ accessPackageA1()
+comment3.params=
+comment3.target=void\ accessPrivateA1()
+numComments=4

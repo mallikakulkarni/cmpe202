@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ testBalanceForLessThan50Cents()
+comment1.params=
+comment1.target=void\ testBalanceIsReturnedForExtraMoney()
+comment2.params=
+comment2.target=void\ checkSlotAfterRemovingTwoGumballs()
+comment3.params=
+comment3.target=void\ checkSlotForTwoGumballs()
+comment4.params=
+comment4.target=void\ checkMoreThanFiftyCentsGumball()
+comment5.params=
+comment5.target=void\ checkLessThanFiftyCents()
+comment6.params=
+comment6.target=void\ checkEqualToFiftyCents()
+numComments=7
