@@ -5,6 +5,7 @@ import org.junit.Test;
 
 
 public class JUnitTests {
+	
 	@Test
 	public void testBalanceForLessThan50Cents () {
 		//If more than 50 cents are present in machine
@@ -14,8 +15,7 @@ public class JUnitTests {
 		gumballMachine.insertDime();
 		assertEquals(35 , gumballMachine.getMoneyValue());
 	}
-    
-    
+	
 	@Test
 	public void testBalanceIsReturnedForExtraMoney () {
 		//If more than 50 cents are present in machine
@@ -24,7 +24,7 @@ public class JUnitTests {
 		gumballMachine.insertQuarter();
 		gumballMachine.insertDime();
 		gumballMachine.insertQuarter();
-		assertEquals(gumballMachine.getreturnValue(), 10);
+		assertEquals (10, gumballMachine.getreturnValue());
 	}
 	
 	@Test
@@ -40,9 +40,8 @@ public class JUnitTests {
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
 		gumballMachine.takeGumballFromSlot();
-		gumballMachine.takeGumballFromSlot();
 		boolean gumBallinSlotFlag = gumballMachine.isGumballInSlot();
-		assertEquals(true, gumBallinSlotFlag);
+		assertEquals(false, gumBallinSlotFlag);
 	}
 	
 	@Test
@@ -58,6 +57,9 @@ public class JUnitTests {
 		gumballMachine.turnCrank();
 		boolean gumBallinSlotFlag = gumballMachine.isGumballInSlot();
 		assertEquals(true, gumBallinSlotFlag);
+		gumballMachine.takeGumballFromSlot();
+		gumBallinSlotFlag = gumballMachine.isGumballInSlot();
+		assertEquals(false, gumBallinSlotFlag);
 	}
 	
 	@Test

@@ -55,7 +55,7 @@ public class NoQuarterState implements State {
 	 }
  
 	public void dispense() {
-		System.out.println("You need to pay " +(50-moneyValue)+ " first");
+		System.out.println("You need to pay " +(50-moneyValue)+ " cents first");
 	} 
  
 	public String toString() {

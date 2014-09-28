@@ -134,11 +134,9 @@ public class GumballMachine implements IGumballMachine {
 	public void takeGumballFromSlot() {
 		// TODO Auto-generated method stub
 		if (isGumballInSlot() == true) {
-			System.out.println ("Take gumball from slot");
-			gumballsInSlot = gumballsInSlot - 1;
-			if (gumballsInSlot == 0) {
-			System.out.println ("No gumballs left in slot");
-			}
+			System.out.println ("Take gumball from slot - " +gumballsInSlot);
+			gumballsInSlot = 0;
+			isGumballinSlotFlag = false;
 		}
 	}
 	
