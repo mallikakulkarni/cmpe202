@@ -2,7 +2,6 @@
 
 import java.text.DecimalFormat;
 
-
 public class Leaf implements Component {
 
     private String description ;
@@ -33,4 +32,3 @@ public class Leaf implements Component {
 	}
 	 
 }
- 

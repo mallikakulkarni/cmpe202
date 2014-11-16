@@ -1,58 +1,51 @@
 
-public class PattyDecorator extends DecoratorBurger{
-	
+
+public class PattyDecorator extends DecoratorBurger {
+
 	private String[] patty;
 	DecoratorBurger componentReference;
-	
-	public PattyDecorator(Component component) {
-		super(component);
-	}
-	
-	public PattyDecorator(DecoratorBurger c, String[] patty) {
+	Double cost;
+
+	public PattyDecorator(String[] patty) {
 		this.patty = patty;
-		componentReference = c;
 	}
-	
-	Double cost = 0.00;
-	
+
 	private Double calcCost(String pattyComponent) {
-		//List out cost of items in menu
-		Double cost;
-		String[] pattyComponentsFree = {"Beef", "Chicken", "Turkey", "Veggie", "On A Bun", "Lettuce Blend", "Organic Mixed Greens"};
+		// List out cost of items in menu
+		Double componentCost;
+		String[] pattyComponentsFree = { "On A Bun", "Seasonal Lettuce Blend", "Organic Mixed Greens", "Baby Spinach", "Kale", "Quinoa",	 "Hormone & Antibiotic free beef", 
+				"100% Natural Chicken Breast", "100% Natural Ground Turkey", "Housemade Vegan Veggie"};
 		String pattySmall = "1/3lb.";
-		String pattyMedium = "2/3lb.";
+		String pattyMedium = "1/2lb.";
 		String pattyBig = "1lb.";
 		String bowlOptions = "In A Bowl";
+		String[] fourDollarPatties = {"Organic Bison", "Ahi Tuna"};
 		
+
 		if (pattyComponent.equals(pattySmall)) {
-			cost = 9.50;
-		}
-		else if (pattyComponent.equals(pattyMedium)) {
-			cost = 11.50;
-		}
-		else if (pattyComponent.equals(pattyBig)) {
-			cost = 15.50;
-		}
-		else if (pattyComponent.equals(bowlOptions)) {
-			cost = 1.00;
-		}
-		else {
-			cost = 0.00;
+			componentCost = 9.00;
+		} else if (pattyComponent.equals(pattyMedium)) {
+			componentCost = 12.00;
+		} else if (pattyComponent.equals(pattyBig)) {
+			componentCost = 18.00;
+		} else if (pattyComponent.equals(bowlOptions)) {
+			componentCost = 1.00;
+		} else {
+			componentCost = 0.00;
 		}
 		
-		return cost;
+		return componentCost;
 	}
-	
+
 	@Override
 	public Double getCost() {
-		
-		for (String pattyComponent : patty ) {
+		cost = 0.00;
+		for (String pattyComponent : patty) {
 			cost = cost + calcCost(pattyComponent);
 		}
-		
-		return componentReference.getCost() + cost;
+		return cost;
 	}
-	
+
 	@Override
 	public void printDescription() {
 		// TODO Auto-generated method stub
@@ -60,10 +53,10 @@ public class PattyDecorator extends DecoratorBurger{
 			System.out.print(patty[i]);
 			if (i != patty.length - 1) {
 				System.out.print(" + ");
-			}	
+			}
 		}
 		System.out.println();
-		
+
 	}
 
 	@Override
@@ -83,6 +76,5 @@ public class PattyDecorator extends DecoratorBurger{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

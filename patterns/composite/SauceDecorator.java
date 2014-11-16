@@ -1,12 +1,9 @@
 
+
 public class SauceDecorator extends DecoratorBurger{
 	
 	private String[] sauces;
 	DecoratorBurger componentReference;
-	
-	public SauceDecorator(Component component) {
-		super(component);
-	}
 	
 	public SauceDecorator(DecoratorBurger c, String[] sauces) {
 		this.sauces = sauces;
@@ -16,7 +13,7 @@ public class SauceDecorator extends DecoratorBurger{
 	@Override
 	public Double getCost() {
 		Double cost;
-		Double extraSauceCost = 0.75;
+		Double extraSauceCost = 0.50;
 		int numberFreeSauces = 1;
 		if (sauces.length > numberFreeSauces) {
 			cost = (sauces.length - numberFreeSauces) * extraSauceCost;

@@ -1,12 +1,9 @@
 
+
 public class ToppingDecorator extends DecoratorBurger{
 	private String[] toppings;
 	private DecoratorBurger componentReference;
-	
-	public ToppingDecorator(Component component) {
-		super(component);
-	}
-	
+
 	public ToppingDecorator(DecoratorBurger c, String[] toppings) {
 		this.toppings = toppings;
 		componentReference = c;
@@ -15,8 +12,8 @@ public class ToppingDecorator extends DecoratorBurger{
 	@Override
 	public Double getCost() {
 		Double cost;
-		Double extraToppingCost = 0.75;
-		int numberFreeToppings = 4;
+		Double extraToppingCost = 0.00;
+		int numberFreeToppings = 0;
 		if (toppings.length > numberFreeToppings) {
 			cost = (toppings.length - numberFreeToppings) * extraToppingCost;
 			

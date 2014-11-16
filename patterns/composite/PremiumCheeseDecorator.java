@@ -1,9 +1,9 @@
-public class CheeseDecorator extends DecoratorBurger {
+public class PremiumCheeseDecorator extends DecoratorBurger {
 	
 	private String[] cheeses;
 	DecoratorBurger componentReference;
 	
-	public CheeseDecorator(DecoratorBurger c, String[] cheeses) {
+	public PremiumCheeseDecorator(DecoratorBurger c, String[] cheeses) {
 		this.cheeses = cheeses;
 		componentReference = c;
 	}
@@ -11,15 +11,7 @@ public class CheeseDecorator extends DecoratorBurger {
 	@Override
 	public Double getCost() {
 		Double cost;
-		Double extraCheeseCost = 1.00;
-		int numberFreeCheeses = 1;
-		if (cheeses.length > numberFreeCheeses) {
-			cost = (cheeses.length - numberFreeCheeses) * extraCheeseCost;
-			
-		}
-		else {
-			cost = 0.00;
-		}
+		cost = cheeses.length * 1.50;
 		return componentReference.getCost() + cost;	
 	}
 	

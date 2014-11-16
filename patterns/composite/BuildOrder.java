@@ -2,56 +2,84 @@
 
 public class BuildOrder {
 
-  
+	static int numberOfChildren = 0;
 	
-	public static Component getOrder()
-    {
-        Composite order = new Composite( "Order" ) ;
-        order.addChild(new Leaf("Crispy Onion Strings", 5.50 ));
-        order.addChild(new Leaf("The Purist", 8.00 ));
-        
-        final String[] patty = {"Beef", "1/3lb.", "On A Bun"};//"In A Bowl", "Lettuce Blend"};
-    	final String[] cheese = {"Danish Blue Cheese", "Horseradish Cheddar"};
-    	final String[] topping = {"Bermuda Red Onion", "Black Olives", "Carrot Strings", "Coleslaw"};
-    	final String[] premiumTopping = {"Applewood Smoked Bacon"};
-    	final String[] sauce = {"Appricot Sauce"};
-    	final String[] bowlGreens = {"Lettuce Blend", "Organic Mixed Greens"};
-    	DecoratorBurger b = new DecoratorBurger();
-    	PattyDecorator pattyDecorator = new PattyDecorator(b, patty);
-    	CheeseDecorator cheeseDecorator = new CheeseDecorator(pattyDecorator, cheese);
-    	ToppingDecorator toppingDecorator = new ToppingDecorator(cheeseDecorator, topping);
-    	PremiumDecorator premiumDecorator = new PremiumDecorator(toppingDecorator, premiumTopping);
-    	SauceDecorator sauceDecorator = new SauceDecorator(premiumDecorator, sauce);
-        
-    	Composite customBurger = new Composite( "Build Your Own Burger", sauceDecorator ) ;
-    	
-    	
-        customBurger.addChild(pattyDecorator);
-      
-        customBurger.addChild(cheeseDecorator);
-        customBurger.addChild(toppingDecorator);
-        customBurger.addChild(premiumDecorator);
-        customBurger.addChild(sauceDecorator);
-        order.addChild( customBurger );
-        return order ;
-    }
+	static Component getOrder() {
+		String patty1FourDollars = "Organic Bison";
+		String[] patty1 = { "1/2lb.", "On A Bun" };
+		String[] cheese1 = { "Yellow American", "Spicy Jalapeno Jack"};
+		String[] premiumCheese1 = {"Danish Blue Cheese"};
+		String[] topping1 = { "Dill Pickle Chips", "Black Olives","Spicy Pickle"};
+		String[] premiumTopping1 = {};
+		String[] premiumToppingTwoDollars1 = { "Marinated Tomatoes" };
+		String[] sauce1 = { "Mayonnaise", "Thai Peanut Sauce" };
+		String bun1 = "Ciabatta (Vegan)";
+		String bun1FiftyCents = "";
+		String bun1OneDollar = "";
+		String side1 = "ShoeString fries";
+		
+		String patty2FourDollars = "";
+		String[] patty2 = { "Hormone & Antibiotic Free Beef", "1/3lb.", "On A Bun" };
+		String[] cheese2 = { "Smoked Gouda", "Greek Feta"};
+		String[] premiumCheese2 = {"Fresh Mozzarella"};
+		String[] topping2 = { "Crushed Peanuts"};
+		String[] premiumTopping2 = { "Sunny side up Egg"};
+		String[] premiumToppingTwoDollars2 = { "Marinated Tomatoes" };
+		String[] sauce2 = { "Habanero Salsa" };
+		String bun2 = "";
+		String bun2FiftyCents = "";
+		String bun2OneDollar = "Gluten-Free Bun";
+		String side2 = "ShoeString fries";
+		
+		Composite order = new Composite("Order");
+		Component customBurger1 = buildYourOwnBurger(patty1FourDollars, patty1, cheese1, premiumCheese1, topping1, premiumTopping1, premiumToppingTwoDollars1, sauce1, bun1, bun1FiftyCents, bun1OneDollar, side1);
+		order.addChild(customBurger1);
+		numberOfChildren++;
+		Component customBurger2 = buildYourOwnBurger(patty2FourDollars, patty2, cheese2, premiumCheese2, topping2, premiumTopping2, premiumToppingTwoDollars2, sauce2, bun2, bun2FiftyCents, bun2OneDollar, side2);
+		order.addChild(customBurger2);
+		numberOfChildren++;
+		return order;
+	}
+	
+	static Double getsubTotal(Component order) {
+		double subTotal = 0.00;
+		for(int i = 0; i < numberOfChildren; i++) {
+			DecoratorBurger burger = (DecoratorBurger) order.getChild(i);
+			subTotal = subTotal + burger.getCost();
+		}
+		
+		return subTotal;
+	}
+
+	private static Component buildYourOwnBurger(String pattyFourDollars, String[] patty, String[] cheese, String[] premiumCheese, String[] topping, String[] premium, String[] premiumTwoDollars, String[] sauce, String bun, String bunFiftyCents, String bunOneDollar, String side) {
+		
+		DecoratorBurger pattyDecorator = new PattyDecorator(patty);
+		DecoratorBurger pattyDecoratorFourDollars = new PattyDecoratorFourDollars(pattyDecorator, pattyFourDollars);
+		DecoratorBurger cheeseDecorator = new CheeseDecorator(pattyDecoratorFourDollars,cheese);
+		DecoratorBurger premiumCheeseDecorator = new PremiumCheeseDecorator(cheeseDecorator,premiumCheese);
+		DecoratorBurger toppingDecorator = new ToppingDecorator(premiumCheeseDecorator, topping);
+		DecoratorBurger premiumDecorator = new PremiumDecorator(toppingDecorator, premium);
+		DecoratorBurger premiumDecoratorTwoDollars = new PremiumDecoratorTwoDollars(premiumDecorator, premiumTwoDollars);
+		DecoratorBurger sauceDecorator = new SauceDecorator(premiumDecoratorTwoDollars, sauce);
+		DecoratorBurger bunDecorator = new BunDecorator(sauceDecorator, bun);
+		DecoratorBurger bunDecoratorFiftyCents = new BunDecoratorFiftyCents(bunDecorator, bunFiftyCents);
+		DecoratorBurger bunDecoratorOneDollar = new BunDecoratorOneDollar(bunDecoratorFiftyCents, bunOneDollar);
+		DecoratorBurger sideDecorator = new SideDecorator(bunDecoratorOneDollar, side);
+
+		Component customBurger = new CustomBurgerDecorator(sideDecorator,"Build Your Own Burger");
+		customBurger.addChild(pattyDecorator);
+		customBurger.addChild(pattyDecoratorFourDollars);
+		customBurger.addChild(cheeseDecorator);
+		customBurger.addChild(premiumCheeseDecorator);
+		customBurger.addChild(toppingDecorator);
+		customBurger.addChild(premiumDecorator);
+		customBurger.addChild(premiumDecoratorTwoDollars);
+		customBurger.addChild(sauceDecorator);
+		customBurger.addChild(bunDecorator);
+		customBurger.addChild(bunDecoratorFiftyCents);
+		customBurger.addChild(bunDecoratorOneDollar);
+		customBurger.addChild(sideDecorator);
+		return customBurger;
+	}
 
 }
-
-
-/*
-
-Counter Burger Menu:
-https://thecounterburger.emn8.com/?store=Times%20Square
-/*customBurger.addChild(new Leaf("Beef, 1/3 lb on a Bun", 9.50 )); // base price for 1/3 lb
-        customBurger.addChild(new Leaf("Danish Blue Cheese", 0.00 )); // 1 cheese free, extra cheese +1.00
-        customBurger.addChild(new Leaf("Horseradish Cheddar", 1.00 )); // extra cheese +1.00
-        customBurger.addChild(new Leaf("Bermuda Red Onion", 0.00 )); // 4 toppings free, extra +.75
-        customBurger.addChild(new Leaf("Black Olives", 0.00 )); // 4 toppings free, extra +.75
-        customBurger.addChild(new Leaf("Carrot Strings", 0.00 )); // 4 toppings free, extra +.75
-        customBurger.addChild(new Leaf("Coleslaw", 0.00 )); // 4 toppings free, extra +.75
-        customBurger.addChild(new Leaf("Applewood Smoked Bacon", 1.50 )); // premium topping +1.50
-        customBurger.addChild(new Leaf("Appricot Sauce", 0.00 )); // 1 sauce free, extra +.75
-        order.addChild( customBurger );
-        return order ;
-*/

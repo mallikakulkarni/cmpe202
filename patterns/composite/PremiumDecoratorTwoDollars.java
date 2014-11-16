@@ -3,23 +3,24 @@ import java.util.List;
 
 
 
-public class PremiumDecorator extends DecoratorBurger{
+public class PremiumDecoratorTwoDollars extends DecoratorBurger{
 	
 	private String[] premiumToppings;
 	private DecoratorBurger componentReference;
 	
 
-	public PremiumDecorator(DecoratorBurger c, String[] premiumToppings) {
+	public PremiumDecoratorTwoDollars(DecoratorBurger c, String[] premiumToppings) {
 		this.premiumToppings = premiumToppings;
 		componentReference = c;
 	}
 	
 	//List<String> premiumToppingsExtraPricing = new ArrayList<String>();
 	
+	
 	@Override
 	public Double getCost() {
 		Double cost;
-		cost = premiumToppings.length * 1.00;
+		cost = premiumToppings.length * 3.00;
 		return componentReference.getCost() + cost;
 	}
 	
@@ -35,6 +36,7 @@ public class PremiumDecorator extends DecoratorBurger{
 			}
 			System.out.println();
 		}
+		
 	
 	}
 
