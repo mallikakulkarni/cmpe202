@@ -1,10 +1,12 @@
+package composite;
 
-public class BunDecoratorFiftyCents extends DecoratorBurger {
+
+public class BunDecorator extends DecoratorBurger {
 	
 	private String bun;
 	private DecoratorBurger componentReference;
 	
-	public BunDecoratorFiftyCents(DecoratorBurger c, String bun) {
+	public BunDecorator(DecoratorBurger c, String bun) {
 		this.bun = bun;
 		componentReference = c;
 	}
@@ -13,7 +15,7 @@ public class BunDecoratorFiftyCents extends DecoratorBurger {
 	
 	@Override
 	public void printDescription() {
-		if (bun != ""){
+		if (bun != "") {
 			System.out.println(bun);
 		}
 	}
@@ -38,14 +40,8 @@ public class BunDecoratorFiftyCents extends DecoratorBurger {
 
 	@Override
 	public Double getCost() {
-		Double cost;
-		if (bun.equals("")) {
-			cost = 0.00;
-		}
-		else {
-			cost = 0.50;
-		}
 		
+		Double cost = 0.00;
 		return componentReference.getCost() + cost;
 		
 	}

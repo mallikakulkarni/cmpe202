@@ -1,3 +1,5 @@
+package composite;
+
 
 
 public class PattyDecorator extends DecoratorBurger {

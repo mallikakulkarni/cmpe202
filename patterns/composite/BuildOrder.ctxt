@@ -1,4 +1,8 @@
 #BlueJ class context
 comment0.params=
-comment0.target=void\ runTest()
-numComments=1
+comment0.target=Component\ getOrder()
+comment1.params=order
+comment1.target=java.lang.Double\ getsubTotal(Component)
+comment2.params=pattyFourDollars\ patty\ cheese\ premiumCheese\ topping\ premium\ premiumTwoDollars\ sauce\ bun\ bunFiftyCents\ bunOneDollar\ side
+comment2.target=Component\ buildYourOwnBurger(java.lang.String,\ java.lang.String[],\ java.lang.String[],\ java.lang.String[],\ java.lang.String[],\ java.lang.String[],\ java.lang.String[],\ java.lang.String[],\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=3

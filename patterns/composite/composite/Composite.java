@@ -1,3 +1,5 @@
+package composite;
+
 
 
 import java.util.ArrayList;
@@ -29,5 +31,4 @@ public class Composite implements Component {
 	public Component getChild(int i) {
 		return components.get(i);
 	}
-
 }

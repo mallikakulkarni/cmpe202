@@ -1,41 +1,33 @@
+package composite;
 
-
-public class SauceDecorator extends DecoratorBurger{
+public class PremiumCheeseDecorator extends DecoratorBurger {
 	
-	private String[] sauces;
+	private String[] cheeses;
 	DecoratorBurger componentReference;
 	
-	public SauceDecorator(DecoratorBurger c, String[] sauces) {
-		this.sauces = sauces;
+	public PremiumCheeseDecorator(DecoratorBurger c, String[] cheeses) {
+		this.cheeses = cheeses;
 		componentReference = c;
 	}
 	
 	@Override
 	public Double getCost() {
 		Double cost;
-		Double extraSauceCost = 0.50;
-		int numberFreeSauces = 1;
-		if (sauces.length > numberFreeSauces) {
-			cost = (sauces.length - numberFreeSauces) * extraSauceCost;
-			
-		}
-		else {
-			cost = 0.00;
-		}
-		return componentReference.getCost() + cost;
+		cost = cheeses.length * 1.50;
+		return componentReference.getCost() + cost;	
 	}
 	
 	@Override
 	public void printDescription() {
 		// TODO Auto-generated method stub
-		for (int i = 0; i < sauces.length; i++) {
-			System.out.print(sauces[i]);
-			if (i != sauces.length - 1) {
+		for (int i = 0; i < cheeses.length; i++) {
+			System.out.print(cheeses[i]);
+			if (i != cheeses.length - 1) {
 				System.out.print(" + ");
 			}	
 		}
 		System.out.println();
-
+		
 	}
 
 	@Override

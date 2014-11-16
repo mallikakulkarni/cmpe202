@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=d
-comment0.target=Composite(java.lang.String)
+comment0.params=c\ bun
+comment0.target=BunDecorator(DecoratorBurger,\ java.lang.String)
 comment1.params=
 comment1.target=void\ printDescription()
 comment2.params=c
@@ -9,4 +9,6 @@ comment3.params=c
 comment3.target=void\ removeChild(Component)
 comment4.params=i
 comment4.target=Component\ getChild(int)
-numComments=5
+comment5.params=
+comment5.target=java.lang.Double\ getCost()
+numComments=6

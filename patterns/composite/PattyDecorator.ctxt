@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=patty
+comment0.target=PattyDecorator(java.lang.String[])
+comment1.params=pattyComponent
+comment1.target=java.lang.Double\ calcCost(java.lang.String)
+comment2.params=
+comment2.target=java.lang.Double\ getCost()
+comment3.params=
+comment3.target=void\ printDescription()
+comment4.params=c
+comment4.target=void\ addChild(Component)
+comment5.params=c
+comment5.target=void\ removeChild(Component)
+comment6.params=i
+comment6.target=Component\ getChild(int)
+numComments=7
